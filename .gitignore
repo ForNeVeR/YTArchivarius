@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2026 Friedrich von Never <friedrich@fornever.me>
+#
+# SPDX-License-Identifier: MIT
+
+# Backend:
+bin/
+obj/
+
+# Frontend:
+node_modules/
+YTArchivarius/wwwroot/
+
+# IDE:
+/.vs/
+/.idea/
+*.user

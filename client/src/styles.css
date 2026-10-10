@@ -1,0 +1,279 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Friedrich von Never <friedrich@fornever.me>
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+:root {
+  --bg: #f6f6f6;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --muted: #666666;
+  --border: #d9d9d9;
+  --link: #0b57d0;
+  --visited: #8a5cb8;
+  --accent: #c4302b;
+  --error-bg: #fdecea;
+  --error-text: #8a1c14;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161616;
+    --surface: #1f1f1f;
+    --text: #e8e8e8;
+    --muted: #9a9a9a;
+    --border: #333333;
+    --link: #8ab4f8;
+    --visited: #b994e0;
+    --accent: #ff5c52;
+    --error-bg: #3a1714;
+    --error-text: #ffb4ab;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.4 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+a {
+  color: var(--link);
+}
+
+button,
+.button,
+input {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 10px;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px 16px;
+}
+
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
+  margin-bottom: 12px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.week-label {
+  font-variant-numeric: tabular-nums;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 12px 0;
+}
+
+.pager button {
+  min-width: 34px;
+  font-variant-numeric: tabular-nums;
+}
+
+.pager button.current {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+.pager .gap {
+  padding: 0 4px;
+  color: var(--muted);
+}
+
+.pager form {
+  display: flex;
+  gap: 4px;
+  margin-left: 12px;
+}
+
+.pager input {
+  width: 72px;
+}
+
+h2 {
+  font-size: 15px;
+  margin: 24px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+h2 .count {
+  color: var(--muted);
+  font-weight: normal;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: var(--border);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.duration,
+.badge {
+  position: absolute;
+  bottom: 6px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.duration {
+  right: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.badge {
+  left: 6px;
+  background: var(--accent);
+}
+
+.meta {
+  padding: 8px 10px 10px;
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.title:hover {
+  text-decoration: underline;
+}
+
+/* Browsers only allow colour changes on :visited; enough to see what was already opened. */
+.title:visited {
+  color: var(--visited);
+}
+
+.sub {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.sub a {
+  color: var(--muted);
+}
+
+.notice {
+  max-width: 720px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+p.notice {
+  margin: 24px 0;
+  padding: 0;
+  color: var(--muted);
+}
+
+.notice.error {
+  color: var(--error-text);
+  background: var(--error-bg);
+  padding: 10px 14px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+}
+
+.notice pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 12px;
+  overflow-x: auto;
+}
+
+footer {
+  margin-top: 32px;
+  color: var(--muted);
+  font-size: 12px;
+}
