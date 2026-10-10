@@ -15,6 +15,8 @@ so you can use YouTube's own "Save → Watch Later" (the YouTube Data API cannot
 - Nothing is stored except the OAuth token (`%LOCALAPPDATA%\YTArchivarius\token`). Fetched data is kept in
   memory only, while the server runs.
 
+![Application Screenshot](docs/screenshot.png)
+
 ## Why?
 YouTube is very slow if you have many subscriptions and/or you want to scroll the subscription list back to several months ago. This is mostly because it tries to build a full list of all videos in your subscriptions. There is no way to filter the subscription list by date. This small web application solves the problem by listing all the videos from the channels you subscribed with per-week paging. 
 
